@@ -193,7 +193,10 @@ export class AppComponent implements OnInit {
         acquireds: this.formBuilder.array([]),
         gadgets: this.formBuilder.array([]),
         congenitalInborn: [''],
-
+        rehabService: [],
+        rehabReason: [''],
+        anyMember: [],
+        relation: [],
         // acquired: this.formBuilder.array([]),
         // wheelchair: [''],
         // disabilityTypes: this.formBuilder.array([]),
@@ -228,5 +231,10 @@ export class AppComponent implements OnInit {
   public isFieldInvalid(fieldName: string): boolean | undefined {
     const field = this.censusForm().get(fieldName);
     return field?.invalid && (field.dirty || field.touched);
+  }
+
+  public onSave(): void {
+    this.censusForm().markAllAsTouched();
+    const zzz = this.censusForm().valid;
   }
 }

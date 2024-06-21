@@ -811,3 +811,15 @@ textarea.form-control:focus {
   -webkit-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
 }
+.text-danger {
+  color: red;
+}
+.mt-1,
+.my-1 {
+  margin-top: 0.25rem !important;
+}
+
+.pb-1,
+.py-1 {
+  padding-bottom: 0.25rem !important;
+}
