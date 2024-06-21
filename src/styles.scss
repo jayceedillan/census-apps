@@ -798,3 +798,17 @@ textarea.form-control:focus {
   border-top: none;
   border-right: none;
 }
+
+.offset-6 {
+  margin-left: 50%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.out-of-box {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
