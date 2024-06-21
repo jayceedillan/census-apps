@@ -7,558 +7,566 @@
             <h5 class="title">Census on Persons with Disabilities</h5>
           </div>
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-4 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">SURNAME (Apelyido) </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Surname"
-                    class="form-control"
-                  />
+            <form [formGroup]="censusForm()">
+              <div class="row">
+                <div class="col-md-4 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="surname" class="control-label"
+                      >SURNAME (Apelyido)</label
+                    >
+                    <input
+                      id="surname"
+                      formControlName="surname"
+                      placeholder="Surname"
+                      class="form-control"
+                    />
+                    <div *ngIf="isFieldInvalid('surname')" class="text-danger">
+                      Surname is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 px-md-1 text-left">
+                  <div class="form-group">
+                    <label for="givenName" class="control-label"
+                      >GIVEN NAME (Pangalan)</label
+                    >
+                    <input
+                      id="givenName"
+                      formControlName="givenName"
+                      placeholder="Given Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-1 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="mi" class="control-label">M.I</label>
+                    <input
+                      id="mi"
+                      formControlName="mi"
+                      placeholder="M.I"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="nickName" class="control-label"
+                      >NICK NAME</label
+                    >
+                    <input
+                      id="nickName"
+                      formControlName="nickName"
+                      placeholder="Nick Name"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3 px-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> GIVEN NAME (Pangalan) </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Given Name"
-                    class="form-control"
-                  />
+              <div class="row">
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="dob" class="control-label">Date Of Birth</label>
+                    <input
+                      id="dob"
+                      formControlName="dob"
+                      placeholder="DOB"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-1 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> M.I </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="email"
-                    placeholder="M.I"
-                    class="form-control"
-                  />
+                <div class="col-md-4 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="pob" class="control-label"
+                      >Place of Birth
+                      <span>(Lugar ng Kapanganakan)</span></label
+                    >
+                    <input
+                      id="pob"
+                      formControlName="placeOfBirth"
+                      placeholder="Place Of Birth"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> NICK NAME </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="email"
-                    placeholder="Nick Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Date Of Birth </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="DOB"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">
-                    place of birth
-                    <span>(Lugar ng Kapanganakan)</span> </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Place Of Birth"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-2 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> gender </label>
-                  <div class="row">
-                    <div class="col-md-6 radio-content">
-                      <div class="form-check">
+                <div class="col-md-2 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="genderMale" class="control-label">Gender</label>
+                    <div class="row">
+                      <div class="col-md-6 radio-content">
                         <div class="form-check form-check-radio mb-3">
-                          <label for="007441918513f" class="form-check-label"
-                            ><input
-                              id="007441918513f"
+                          <label for="genderMale" class="form-check-label">
+                            <input
+                              id="genderMale"
                               type="radio"
+                              formControlName="gender"
+                              value="male"
                               class="form-check-input"
-                              value="radio0" />
-                            male(lalaki)
-                            <span class="form-check-sign"></span
-                          ></label>
+                            />
+                            Male (lalaki)
+                            <span class="form-check-sign"></span>
+                          </label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-6 radio-content">
-                      <div class="form-check">
+                      <div class="col-md-6 radio-content">
                         <div class="form-check form-check-radio">
-                          <label for="007441918513f" class="form-check-label"
-                            ><input
-                              id="007441918513f"
+                          <label for="genderFemale" class="form-check-label">
+                            <input
+                              id="genderFemale"
                               type="radio"
+                              formControlName="gender"
+                              value="female"
                               class="form-check-input"
-                              value="radio0" />
-                            female(babae)
-                            <span class="form-check-sign"></span
-                          ></label>
+                            />
+                            Female (babae)
+                            <span class="form-check-sign"></span>
+                          </label>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> pwd number </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="PWD No."
-                    class="form-control"
-                  />
+                <div class="col-md-3 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="pwd" class="control-label">PWD Number</label>
+                    <input
+                      id="pwd"
+                      formControlName="pwdNumber"
+                      placeholder="PWD No."
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">SURNAME (Apelyido) </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Surname"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 px-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> GIVEN NAME (Pangalan) </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Given Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-1 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> M.I </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="email"
-                    placeholder="M.I"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> NICK NAME </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="email"
-                    placeholder="Nick Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-8 pr-md-1">
-                <div class="form-group">
-                  <label class="control-label"> civil status </label>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <div class="form-check form-check-radio mb-3">
-                          <label for="007441918513f" class="form-check-label"
-                            ><input
-                              id="007441918513f"
-                              type="radio"
-                              class="form-check-input"
-                              value="radio0" />
-                            single
-                            <span class="form-check-sign"></span
-                          ></label>
+              <div class="row">
+                <div class="col-md-8 pr-md-1">
+                  <div class="form-group">
+                    <label for="civilStatus" class="control-label"
+                      >Civil Status</label
+                    >
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-check">
+                          <div class="form-check form-check-radio mb-3">
+                            <label for="single" class="form-check-label">
+                              <input
+                                id="civilStatus"
+                                formControlName="civilStatus"
+                                id="single"
+                                type="radio"
+                                class="form-check-input"
+                                value="single"
+                              />
+                              Single
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <div class="form-check form-check-radio">
-                          <label for="007441918513f" class="form-check-label"
-                            ><input
-                              id="007441918513f"
-                              type="radio"
-                              class="form-check-input"
-                              value="radio0" />
-                            Married
-                            <span class="form-check-sign"></span
-                          ></label>
+                      <div class="col-md-4">
+                        <div class="form-check">
+                          <div class="form-check form-check-radio">
+                            <label for="married" class="form-check-label">
+                              <input
+                                formControlName="civilStatus"
+                                id="married"
+                                type="radio"
+                                class="form-check-input"
+                                value="married"
+                              />
+                              Married
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <div class="form-check form-check-radio">
-                          <label for="007441918513f" class="form-check-label"
-                            ><input
-                              id="007441918513f"
-                              type="radio"
-                              class="form-check-input"
-                              value="radio0" />
-                            Widow
-                            <span class="form-check-sign"></span
-                          ></label>
+                      <div class="col-md-4">
+                        <div class="form-check">
+                          <div class="form-check form-check-radio">
+                            <label for="widow" class="form-check-label">
+                              <input
+                                formControlName="civilStatus"
+                                id="widow"
+                                type="radio"
+                                class="form-check-input"
+                                value="widow"
+                              />
+                              Widow
+                              <span class="form-check-sign"></span>
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4 pl-md-1">
-                <div class="form-group">
-                  <label class="control-label"> No. Of Children </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="No. Of Children"
-                    class="form-control"
-                  />
+                <div class="col-md-4 pl-md-1">
+                  <div class="form-group">
+                    <label for="noOfChildren" class="control-label"
+                      >No. Of Children</label
+                    >
+                    <input
+                      id="noOfChildren"
+                      formControlName="noOfChildren"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="No. Of Children"
+                      class="form-control"
+                      type="number"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-8 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">address (tirahan)</label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Address"
-                    class="form-control"
-                  />
+              <div class="row">
+                <div class="col-md-8 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="address" class="control-label"
+                      >Address (Tirahan)</label
+                    >
+                    <input
+                      id="address"
+                      formControlName="address"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Address"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2 px-md-1 text-left">
+                  <div class="form-group">
+                    <label for="telNo" class="control-label">Tel No.</label>
+                    <input
+                      id="telNo"
+                      formControlName="telNo"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Tel No."
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="cellphoneNo" class="control-label"
+                      >Cellphone No.</label
+                    >
+                    <input
+                      id="cellphoneNo"
+                      formControlName="cellphoneNo"
+                      aria-describedby="addon-right addon-left"
+                      type="text"
+                      placeholder="Cellphone No."
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-2 px-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Tel No. </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Tel No."
-                    class="form-control"
-                  />
+              <div class="row">
+                <div class="col-md-2 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="occupations" class="control-label"
+                      >Occupation</label
+                    >
+                    <input
+                      id="occupation"
+                      formControlName="occupation"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Occupation"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-8 px-md-1 text-left">
+                  <div class="form-group">
+                    <label for="workAddress" class="control-label"
+                      >Address (Trabaho)</label
+                    >
+                    <input
+                      id="workAddress"
+                      formControlName="workAddress"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Address"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-2 pl-md-1 text-left">
+                  <div class="form-group">
+                    <label for="workTelNo" class="control-label"
+                      >Tel. No.</label
+                    >
+                    <input
+                      id="workTelNo"
+                      formControlName="workTelNo"
+                      aria-describedby="addon-right addon-left"
+                      type="text"
+                      placeholder="Tel. No."
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-2 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Cellphone No. </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="text"
-                    placeholder="Cellphone No."
-                    class="form-control"
-                  />
+              <div class="row">
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="fathersName" class="control-label"
+                      >Father's Name</label
+                    >
+                    <input
+                      id="fathersName"
+                      formControlName="fathersName"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Father's Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="fatherOccupation" class="control-label"
+                      >Occupation</label
+                    >
+                    <input
+                      id="fatherOccupation"
+                      formControlName="fatherOccupation"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Occupation"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="mothersName" class="control-label"
+                      >Mother's Name</label
+                    >
+                    <input
+                      id="mothersName"
+                      formControlName="mothersName"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Mother's Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="mothersOccupation" class="control-label"
+                      >Occupation</label
+                    >
+                    <input
+                      id="mothersOccupation"
+                      formControlName="mothersOccupation"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Occupation"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-2 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">occupation</label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Occupation"
-                    class="form-control"
-                  />
+              <div class="row">
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="spouseName" class="control-label">Spouse</label>
+                    <input
+                      id="spouseName"
+                      formControlName="spouseName"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Spouse Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="spouseOccupation" class="control-label"
+                      >Occupation</label
+                    >
+                    <input
+                      id="spouseOccupation"
+                      formControlName="spouseOccupation"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Occupation"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="guardiansName" class="control-label"
+                      >Guardian's Name</label
+                    >
+                    <input
+                      id="guardiansName"
+                      formControlName="guardiansName"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Guardian's Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="guardiansOccupation" class="control-label"
+                      >Occupation</label
+                    >
+                    <input
+                      id="guardiansOccupation"
+                      formControlName="guardiansOccupation"
+                      aria-describedby="addon-right addon-left"
+                      placeholder="Occupation"
+                      class="form-control"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-8 px-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Address (Trabaho) </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Address"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-2 pl-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Tel. No. </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    type="text"
-                    placeholder="Tel. No."
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> fathers's name </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Father's Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> occupation </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="occupation"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> mother's name </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Mother's Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> occupation </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="occupation"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Spouse </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Spouse Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> occupation </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="occupation"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> Guardian's name </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="Guardian's Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label"> occupation </label
-                  ><input
-                    aria-describedby="addon-right addon-left"
-                    placeholder="occupation"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 pr-md-1 text-left">
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="form-group">
-                      <label class="control-label"> Type of disability </label>
-                      <div
-                        *ngFor="let disability of disabilities; let i = index"
-                      >
+              <div class="row">
+                <div class="col-md-6 pr-md-1 text-left">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-group">
+                        <label for="" class="control-label">
+                          Type of disability
+                        </label>
+                        <div
+                          *ngFor="let disability of disabilities; let i = index"
+                        >
+                          <div class="form-check mb-3">
+                            <label
+                              [for]="'checkbox' + i"
+                              class="form-check-label"
+                            >
+                              <input
+                                [id]="'checkbox' + i"
+                                type="checkbox"
+                                [formControl]="disability.control"
+                                class="form-check-input"
+                              />
+                              <span class="form-check-sign"></span>
+                              {{ disability.name }}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
                         <div class="form-check mb-3">
-                          <label
-                            [for]="'checkbox' + i"
-                            class="form-check-label"
-                          >
-                            <input
-                              [id]="'checkbox' + i"
+                          <label for="congenitalInborn" class="form-check-label"
+                            ><input
+                              id="congenitalInborn"
+                              formControlName="congenitalInborn"
                               type="checkbox"
                               class="form-check-input"
                             />
                             <span class="form-check-sign"></span>
-                            {{ disability }}
+                            congenital/inborn
                           </label>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <div class="form-group">
-                      <div class="form-check mb-3">
-                        <label for="9cdca654de0d" class="form-check-label"
-                          ><input
-                            id="9cdca654de0d"
-                            type="checkbox"
-                            class="form-check-input"
-                          />
-                          <span class="form-check-sign"></span>
-                          congenital/inborn
-                        </label>
-                      </div>
-                      <div class="congenital">
-                        <div
-                          class="form-check mb-3"
-                          *ngFor="
-                            let congenitalInBorn of congenitalInBorns;
-                            let i = index
-                          "
-                        >
-                          <label
-                            [for]="'checkbox' + i"
-                            class="form-check-label"
+                        <div class="congenital">
+                          <div
+                            class="form-check mb-3"
+                            *ngFor="
+                              let congenitalInBorn of congenitalInBorns;
+                              let i = index
+                            "
                           >
-                            <input
-                              [id]="'checkbox' + i"
-                              type="checkbox"
-                              class="form-check-input"
-                            />
-                            <span class="form-check-sign"></span>
-                            {{ congenitalInBorn }}
-                          </label>
+                            <label
+                              [for]="'checkbox' + congenitalInBorn.name"
+                              class="form-check-label"
+                            >
+                              <input
+                                [id]="'checkbox' + congenitalInBorn.name"
+                                type="checkbox"
+                                [formControl]="congenitalInBorn.control"
+                                class="form-check-input"
+                              />
+                              <span class="form-check-sign"></span>
+                              {{ congenitalInBorn.name }}
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-check mb-3">
-                        <label for="9cdca654de0d" class="form-check-label"
-                          ><input
-                            id="9cdca654de0d"
-                            type="checkbox"
-                            class="form-check-input"
-                          />
-                          <span class="form-check-sign"></span>
-                          congenital/inborn
-                        </label>
-                      </div>
-                      <div class="acquired">
-                        <div
-                          class="form-check mb-3"
-                          *ngFor="let acquired of acquireds; let i = index"
-                        >
-                          <label
-                            [for]="'checkbox' + i"
-                            class="form-check-label"
-                          >
-                            <input
-                              [id]="'checkbox' + i"
+                      <div class="form-group">
+                        <div class="form-check mb-3">
+                          <label for="acquired" class="form-check-label"
+                            ><input
+                              id="acquired"
                               type="checkbox"
                               class="form-check-input"
                             />
                             <span class="form-check-sign"></span>
-                            {{ acquired }}
+                            acquired
                           </label>
+                        </div>
+                        <div class="acquired">
+                          <div
+                            class="form-check mb-3"
+                            *ngFor="let acquired of acquireds; let i = index"
+                          >
+                            <label
+                              [for]="'checkbox' + acquired.name"
+                              class="form-check-label"
+                            >
+                              <input
+                                [id]="'checkbox' + acquired.name"
+                                type="checkbox"
+                                [formControl]="acquired.control"
+                                class="form-check-input"
+                              />
+                              <span class="form-check-sign"></span>
+                              {{ acquired.name }}
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">
-                    please specify condition below </label
-                  ><textarea rows="3" class="form-control"></textarea>
+                <div class="col-md-6 pr-md-1 text-left">
+                  <div class="form-group">
+                    <label for="specifyCondition" class="control-label">
+                      please specify condition below </label
+                    ><textarea
+                      id="specifyCondition"
+                      rows="3"
+                      class="form-control"
+                      formControlName="specifyCondition"
+                    ></textarea>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <span
-                  >Gadget/s used by the PWD (mga tulong sa pagkilos na ginagamit
-                  ng PWD)</span
+              <div class="row">
+                <div class="col-md-12">
+                  <span
+                    >Gadget/s used by the PWD (mga tulong sa pagkilos na
+                    ginagamit ng PWD)</span
+                  >
+                </div>
+                <div
+                  class="col-md-3 pr-md-1 text-left"
+                  *ngFor="let gadget of gadgets"
                 >
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    wheelchair
-                  </label>
-                </div>
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    Others:
-                    <div class="form-group">
-                      <textarea rows="3" class="form-control"></textarea>
-                    </div>
-                  </label>
+                  <div class="form-check mb-3">
+                    <label
+                      [for]="'gadgetCheckbox' + gadget.name"
+                      class="form-check-label"
+                      ><input
+                        [id]="'gadgetCheckbox' + gadget.name"
+                        type="checkbox"
+                        [formControl]="gadget.control"
+                        class="form-check-input"
+                      />
+                      <span class="form-check-sign"></span>
+                      {{ gadget.name }}
+                    </label>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    crutches
-                  </label>
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    hearing aid
-                  </label>
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    eyeglasses
-                  </label>
-                </div>
-              </div>
-            </div>
+            </form>
+
+            <!-- 
+           
+            
+           
             <div class="row">
               <div class="col-md-12">
                 <span
@@ -588,10 +596,10 @@
                     />
                     <span class="form-check-sign"></span>
                     Hindi naibibigay ang serbisyo dahil:
-                    <div class="form-group">
-                      <textarea rows="3" class="form-control"></textarea>
-                    </div>
                   </label>
+                  <div class="form-group">
+                    <textarea rows="3" class="form-control"></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -874,7 +882,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="card-footer text-left">
               <button type="button" class="btn btn-success" fill="">
                 <!---->Save
