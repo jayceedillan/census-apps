@@ -421,16 +421,13 @@
                         <label for="" class="control-label">
                           Type of disability
                         </label>
+
                         <div
                           *ngFor="let disability of disabilities; let i = index"
                         >
                           <div class="form-check mb-3">
-                            <label
-                              [for]="'checkbox' + i"
-                              class="form-check-label"
-                            >
+                            <label class="form-check-label">
                               <input
-                                [id]="'checkbox' + i"
                                 type="checkbox"
                                 [formControl]="disability.control"
                                 class="form-check-input"
@@ -451,6 +448,7 @@
                               formControlName="congenitalInborn"
                               type="checkbox"
                               class="form-check-input"
+                              (change)="onCongenitalInbornChange($event)"
                             />
                             <span class="form-check-sign"></span>
                             congenital/inborn
@@ -465,13 +463,23 @@
                             "
                           >
                             <label
-                              [for]="'checkbox' + congenitalInBorn.name"
+                              [for]="
+                                'congenitalInBornCheckbox' +
+                                congenitalInBorn.name
+                              "
                               class="form-check-label"
                             >
                               <input
-                                [id]="'checkbox' + congenitalInBorn.name"
+                                [id]="
+                                  'congenitalInBornCheckbox' +
+                                  congenitalInBorn.name
+                                "
                                 type="checkbox"
                                 [formControl]="congenitalInBorn.control"
+                                [ngClass]="{
+                                  'disabled-checkbox':
+                                    !censusForm().get('congenitalInborn')?.value
+                                }"
                                 class="form-check-input"
                               />
                               <span class="form-check-sign"></span>
@@ -487,6 +495,7 @@
                               id="acquired"
                               type="checkbox"
                               class="form-check-input"
+                              formControlName="acquired"
                             />
                             <span class="form-check-sign"></span>
                             acquired
@@ -529,7 +538,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12 pb-1">
                   <span class="title"
                     >Gadget/s used by the PWD (mga tulong sa pagkilos na
@@ -635,8 +644,8 @@
                     />
                   </div>
                 </div>
-              </div>
-              <div class="row">
+              </div> -->
+              <!-- <div class="row">
                 <div class="col-md-12 pb-1">
                   <span class="title">Religious Affiliation(Relihiyon)</span>
                 </div>
@@ -893,7 +902,7 @@
               </div>
               <div class="card-footer text-left">
                 <button type="submit" class="btn btn-success">Save</button>
-              </div>
+              </div> -->
             </form>
             <router-outlet />
           </div>

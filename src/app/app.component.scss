@@ -22,3 +22,8 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+.disabled-checkbox {
+  pointer-events: none; /* Prevents clicks */
+  opacity: 0.5; /* Optionally reduces opacity to indicate disabled state */
+}
