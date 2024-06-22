@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-field',
+  selector: 'census-input-field',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './input-field.component.html',
-  styleUrl: './input-field.component.scss'
+  styleUrl: './input-field.component.scss',
 })
 export class InputFieldComponent {
-
+  @Input() label?: string;
+  @Input() controlName = '';
+  @Input() control?: FormControl;
+  @Input() type = 'text';
 }

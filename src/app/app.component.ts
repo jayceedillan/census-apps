@@ -10,15 +10,26 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { InputFieldComponent } from './components/input-field/input-field.component';
+import { CensusService } from '../services/census.service';
+import { Person } from '../interface';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputFieldComponent,
+  ],
 })
 export class AppComponent implements OnInit {
+  private censusService = inject(CensusService);
+
   public disabilities: {
     id: number;
     name: string;
@@ -154,49 +165,46 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    // this.initTypeOfDisability();
-    // this.initCongenitalInborn();
-    // this.initAcquired();
   }
 
   private initForm(): void {
     this.censusForm.set(
       this.formBuilder.group({
-        surname: ['', Validators.required],
-        givenName: ['', Validators.required],
-        mi: [''],
-        nickName: [''],
-        dob: ['', Validators.required],
-        placeOfBirth: ['', Validators.required],
-        gender: ['', Validators.required],
-        pwdNumber: [''],
-        civilStatus: ['', Validators.required],
-        numberOfChildren: [''],
-        address: ['', Validators.required],
-        telNo: [''],
-        cellphoneNo: [''],
-        noOfChildren: [''],
-        occupation: [''],
-        workAddress: [''],
-        workTelNo: [''],
-        fathersName: [''],
-        fatherOccupation: [''],
-        mothersName: [''],
-        mothersOccupation: [''],
-        specifyCondition: [''],
-        spouseName: [''],
-        spouseOccupation: [''],
-        guardiansName: [''],
-        guardiansOccupation: [''],
-        disability: this.formBuilder.array([]),
-        congenitalInBorn: this.formBuilder.array([]),
-        acquireds: this.formBuilder.array([]),
-        gadgets: this.formBuilder.array([]),
-        congenitalInborn: [''],
-        rehabService: [],
-        rehabReason: [''],
-        anyMember: [],
-        relation: [],
+        surname: ['xx', Validators.required],
+        givenName: ['xx', Validators.required],
+        mi: ['xx'],
+        nickName: ['xx'],
+        dateOfBirth: ['1977-11-16', Validators.required],
+        placeOfBirth: ['xxxx', Validators.required],
+        gender: ['Male', Validators.required],
+        pwdNumber: ['122333'],
+        civilStatus: ['Single', Validators.required],
+        numberOfChildren: [100],
+        address: ['address alng', Validators.required],
+        telNo: ['tel no 11'],
+        cellphoneNo: ['cell phone 22'],
+        // noOfChildren: [''],
+        // occupation: [''],
+        // workAddress: [''],
+        // workTelNo: [''],
+        // fathersName: [''],
+        // fatherOccupation: [''],
+        // mothersName: [''],
+        // mothersOccupation: [''],
+        // specifyCondition: [''],
+        // spouseName: [''],
+        // spouseOccupation: [''],
+        // guardiansName: [''],
+        // guardiansOccupation: [''],
+        // disability: this.formBuilder.array([]),
+        // congenitalInBorn: this.formBuilder.array([]),
+        // acquireds: this.formBuilder.array([]),
+        // gadgets: this.formBuilder.array([]),
+        // congenitalInborn: [''],
+        // rehabService: [],
+        // rehabReason: [''],
+        // anyMember: [],
+        // relation: [],
         // acquired: this.formBuilder.array([]),
         // wheelchair: [''],
         // disabilityTypes: this.formBuilder.array([]),
@@ -208,26 +216,6 @@ export class AppComponent implements OnInit {
     );
   }
 
-  // initTypeOfDisability() {
-  //   const controlArray = this.censusForm().get('typeOfDisability') as FormArray;
-  //   this.disabilities.forEach(() => {
-  //     controlArray.push(this.formBuilder.control(false));
-  //   });
-  // }
-
-  // initCongenitalInborn() {
-  //   const controlArray = this.censusForm().get('congenitalInborn') as FormArray;
-  //   this.congenitalInBorns.forEach(() => {
-  //     controlArray.push(this.formBuilder.control(false));
-  //   });
-  // }
-
-  // initAcquired() {
-  //   const controlArray = this.censusForm().get('acquired') as FormArray;
-  //   this.acquireds.forEach(() => {
-  //     controlArray.push(this.formBuilder.control(false));
-  //   });
-  // }
   public isFieldInvalid(fieldName: string): boolean | undefined {
     const field = this.censusForm().get(fieldName);
     return field?.invalid && (field.dirty || field.touched);
@@ -235,6 +223,10 @@ export class AppComponent implements OnInit {
 
   public onSave(): void {
     this.censusForm().markAllAsTouched();
-    const zzz = this.censusForm().valid;
+    const person = this.censusForm().value as Person;
+    debugger;
+    this.censusService.addPerson(person).subscribe(() => alert('xxx'));
+
+    // const zzz = this.censusForm().valid;
   }
 }

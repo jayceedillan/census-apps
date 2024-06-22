@@ -9,34 +9,20 @@
           <div class="card-body">
             <form [formGroup]="censusForm()" (ngSubmit)="onSave()">
               <div class="row">
-                <div class="col-md-4 pr-md-1 text-left">
-                  <div class="form-group">
-                    <label for="surname" class="control-label"
-                      >SURNAME (Apelyido)</label
-                    >
-                    <input
-                      id="surname"
-                      formControlName="surname"
-                      placeholder="Surname"
-                      class="form-control"
-                    />
-                    <div
-                      *ngIf="
-                        censusForm().get('surname')?.invalid &&
-                        (censusForm().get('surname')?.dirty ||
-                          censusForm().get('surname')?.touched)
-                      "
-                      class="text-danger"
-                    >
-                      <!-- Required Error -->
-                      <span
-                        *ngIf="censusForm().get('surname')?.errors?.['required']"
-                        class="error-required"
-                      >
-                        Surname is required.
-                      </span>
-                    </div>
+                <div class="col-md-12">
+                  <div class="card-footer text-left">
+                    <button type="submit" class="btn btn-success">Save</button>
                   </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 pr-md-1 text-left">
+                  <census-input-field
+                    label="Surname"
+                    controlName="surname"
+                    [control]="$any(censusForm().get('surname'))"
+                  ></census-input-field>
                 </div>
                 <div class="col-md-3 px-md-1 text-left">
                   <div class="form-group">
@@ -79,10 +65,12 @@
               <div class="row">
                 <div class="col-md-3 pr-md-1 text-left">
                   <div class="form-group">
-                    <label for="dob" class="control-label">Date Of Birth</label>
+                    <label for="dateOfBirth" class="control-label"
+                      >Date Of Birth</label
+                    >
                     <input
-                      id="dob"
-                      formControlName="dob"
+                      id="dateOfBirth"
+                      formControlName="dateOfBirth"
                       placeholder="DOB"
                       class="form-control"
                     />
@@ -113,7 +101,7 @@
                               id="genderMale"
                               type="radio"
                               formControlName="gender"
-                              value="male"
+                              value="Male"
                               class="form-check-input"
                             />
                             Male (lalaki)
@@ -128,7 +116,7 @@
                               id="genderFemale"
                               type="radio"
                               formControlName="gender"
-                              value="female"
+                              value="Female"
                               class="form-check-input"
                             />
                             Female (babae)
@@ -167,7 +155,7 @@
                               id="single"
                               type="radio"
                               class="form-check-input"
-                              value="single"
+                              value="Single"
                             />
                             Single
                             <span class="form-check-sign"></span>
@@ -182,7 +170,7 @@
                               id="married"
                               type="radio"
                               class="form-check-input"
-                              value="married"
+                              value="Married"
                             />
                             Married
                             <span class="form-check-sign"></span>
@@ -197,7 +185,7 @@
                               id="widow"
                               type="radio"
                               class="form-check-input"
-                              value="widow"
+                              value="Widow"
                             />
                             Widow
                             <span class="form-check-sign"></span>
@@ -209,12 +197,12 @@
                 </div>
                 <div class="col-md-4 pl-md-1">
                   <div class="form-group">
-                    <label for="noOfChildren" class="control-label"
+                    <label for="numberOfChildren" class="control-label"
                       >No. Of Children</label
                     >
                     <input
-                      id="noOfChildren"
-                      formControlName="noOfChildren"
+                      id="numberOfChildren"
+                      formControlName="numberOfChildren"
                       aria-describedby="addon-right addon-left"
                       placeholder="No. Of Children"
                       class="form-control"
@@ -907,227 +895,10 @@
                 <button type="submit" class="btn btn-success">Save</button>
               </div>
             </form>
-
-            <!-- 
-           
-            
-           
-            
-            
-            
-            <div class="row">
-              <div class="col-md-12">
-                <span>SACRAMENT RECEIVED(Mga sakramentong Natanggap)</span>
-              </div>
-              <div class="col-md-4 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    Baptism (Binyag)
-                  </label>
-                </div>
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    first communion (Kamunyon)
-                  </label>
-                </div>
-              </div>
-              <div class="col-md-3 pr-md-1 text-left">
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    confirmation (kumpil)
-                  </label>
-                </div>
-                <div class="form-check mb-3">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    marriange (Kasal)
-                  </label>
-                </div>
-              </div>
-              <div class="col-md-5 pr-md-1 text-left">
-                <div class="form-group">
-                  <label class="control-label">confession (kumpisal) </label
-                  ><textarea
-                    rows="3"
-                    class="form-control"
-                    placeholder="Remarks"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-7">
-                <span>NAME OF SCHOOL (pinapasukan o pinasukan paaralan)</span>
-              </div>
-              <div class="col-md-5">
-                <span>Level (Antas)</span>
-              </div>
-              <div class="col-md-7 pr-md-1 text-left">
-                <div class="form-group">
-                  <input
-                    aria-describedby="addon-right addon-left"
-                    type="text"
-                    placeholder="Name Of School"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-5 pr-md-1 text-left">
-                <div class="form-check mb-3 form-check-inline">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    elementary
-                  </label>
-                </div>
-                <div class="form-check mb-3 form-check-inline">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    high school
-                  </label>
-                </div>
-                <div class="form-check mb-3 form-check-inline">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    college
-                  </label>
-                </div>
-                <div class="form-check mb-3 form-check-inline">
-                  <label for="9cdca654de0d" class="form-check-label"
-                    ><input
-                      id="9cdca654de0d"
-                      type="checkbox"
-                      class="form-check-input"
-                    />
-                    <span class="form-check-sign"></span>
-                    others:
-                    <div class="form-group">
-                      <input
-                        aria-describedby="addon-right addon-left"
-                        type="text"
-                        placeholder="Others"
-                        class="form-control"
-                      />
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-8">
-                <span
-                  >INFORMANT'S NAME (Pangalan ng nagbigay ng Impormasyon) / DATE
-                  (Petsa ng pagpirma)</span
-                >
-              </div>
-              <div class="col-md-4">
-                <span>RELATION (RELASYON)</span>
-              </div>
-              <div class="col-md-8 pr-md-1 text-left">
-                <div class="form-group">
-                  <input
-                    aria-describedby="addon-right addon-left"
-                    type="text"
-                    placeholder="Informant Name"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 pr-md-1 text-left">
-                <div class="form-group">
-                  <input
-                    aria-describedby="addon-right addon-left"
-                    type="text"
-                    placeholder="Relasyon"
-                    class="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 pr-md-1 out-of-box">
-                DON'T FILL OUT THE BOX
-              </div>
-              <div class="col-md-8 pr-md-1 text-left">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label class="control-label"> LAST NAME </label>
-                      <input
-                        aria-describedby="addon-right addon-left"
-                        type="text"
-                        placeholder="Last Name"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label class="control-label"> First NAME </label>
-                      <input
-                        aria-describedby="addon-right addon-left"
-                        type="text"
-                        placeholder="First Name"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label class="control-label"> Middle Initial </label>
-                      <input
-                        aria-describedby="addon-right addon-left"
-                        type="text"
-                        placeholder="Middle Initial"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+            <router-outlet />
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <router-outlet />
 </div>
